@@ -38,6 +38,9 @@ document.getElementById('history-btn').addEventListener('click', function(){
 
 })
 
+
+// Donation Button Function
+
 document.getElementById('donation-btn').addEventListener('click', function(){
     const historyBtn = document.getElementById('history-btn');
     const donationBtn = document.getElementById('donation-btn');
@@ -50,7 +53,7 @@ document.getElementById('donation-btn').addEventListener('click', function(){
 })
 
 
-// Donate Now Button Section 1 Function
+// Donate-Now Button Section 1 Function
 document.getElementById('donate-now-1').addEventListener('click', function(){
     const showAmountElement = document.getElementById('show-amount-1');
     const showAmount = parseFloat(showAmountElement.innerText);
@@ -67,7 +70,7 @@ document.getElementById('donate-now-1').addEventListener('click', function(){
     history('input-value-1');
 })
 
-// Donate Now Button Section 2 Function
+// Donate-Now Button Section 2 Function
 
 document.getElementById('donate-now-2').addEventListener('click', function(){
     const showAmountElement = document.getElementById('show-amount-2');
@@ -87,7 +90,7 @@ document.getElementById('donate-now-2').addEventListener('click', function(){
 })
 
 
-// Donate Now Button Section 3 Function
+// Donate-Now Button Section 3 Function
 
 document.getElementById('donate-now-3').addEventListener('click', function(){
     const showAmountElement = document.getElementById('show-amount-3');
@@ -104,5 +107,11 @@ document.getElementById('donate-now-3').addEventListener('click', function(){
     const remainingBalance = mainBalance - inputValue;
     mainBalanceElement.innerText = remainingBalance;
     history('input-value-3');
+})
+
+// Go to Blog page Function
+
+document.getElementById('blog-btn').addEventListener('click', function(){
+    window.location.href = ('blog.html');
 })
 
