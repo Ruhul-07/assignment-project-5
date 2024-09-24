@@ -4,27 +4,34 @@
 function getInputValueById(id){
     const inputValue = parseFloat(document.getElementById(id).value);
     return inputValue;
-
 }
+
+function cardTitleShowById(title){
+    const titleValue = String(document.getElementById(title).innerHTML);
+    return titleValue;
+}
+
+
 // History show Function
 
-function history(id){
-    const inputValue = getInputValueById(id)
+function history(id, title){
+    const inputValue = getInputValueById(id);
+    const cardTitle= cardTitleShowById(title);
     const historyItem = document.createElement('div');
-    historyItem.className = "rounded-lg p-8 border-1 border-bg-[#1111111]";
+   
+    historyItem.className = "rounded-lg p-8 border-2 border-[#1111111]";
     historyItem.innerHTML = `
-        <h4 class="font-bold text-[#111111] text-xl">${inputValue} Taka is donated for flood-2024 at Noakhali,Bangladesh</h4>
-        <p class="text-base text-[#111111B3] font-light">Date:${new Date()}</p>
+        <h4 class="font-bold text-[#111111] text-xl">${inputValue} Taka is ${cardTitle}</h4>
+        <p class="text-base text-[#111111B3] font-light">Date: ${new Date()}</p>
     `;
 
     const historyContainer = document.getElementById('history-list');
     historyContainer.insertBefore(historyItem, historyContainer.firstChild);
 
-    historyContainer.classList.remove('hidden')
-
     return historyContainer;
-
 }
+
+
 
 // History Button Function
 
@@ -37,8 +44,8 @@ document.getElementById('history-btn').addEventListener('click', function(){
    const card = document.getElementById('card');
 
    card.classList.add('hidden')
-
-
+   const showHistory = document.getElementById('history-list');
+   showHistory.classList.remove('hidden')
 })
 
 
@@ -52,11 +59,14 @@ document.getElementById('donation-btn').addEventListener('click', function(){
 
    const card = document.getElementById('card');
 
-   card.classList.remove('hidden')
+   card.classList.remove('hidden');
+
+   const showHistory = document.getElementById('history-list');
+   showHistory.classList.add('hidden')
 })
 
 
-// Donate-Now Button Section 1 Function
+// Donate-Now Button card-1 Function
 document.getElementById('donate-now-1').addEventListener('click', function(){
     const showAmountElement = document.getElementById('show-amount-1');
     const showAmount = parseFloat(showAmountElement.innerText);
@@ -64,18 +74,25 @@ document.getElementById('donate-now-1').addEventListener('click', function(){
     const mainBalance = parseFloat(mainBalanceElement.innerText);
 
     const inputValue = getInputValueById('input-value-1');
-    const newShowAmount = showAmount + inputValue;
+    if(!isNaN(inputValue) && inputValue > 0 && inputValue <= mainBalance){
 
-    showAmountElement.innerText = newShowAmount;
+        const newShowAmount = showAmount + inputValue;
 
-    const remainingBalance = mainBalance - inputValue;
-    mainBalanceElement.innerText = remainingBalance;
-    history('input-value-1');
-   
-    document.getElementById("my_modal_3").showModal();
+        showAmountElement.innerText = newShowAmount;
+
+        const remainingBalance = mainBalance - inputValue;
+        mainBalanceElement.innerText = remainingBalance;  
+
+        history('input-value-1', 'card-title-1');
+        document.getElementById("my_modal_3").showModal();
+    }
+    else{
+        alert('Invalid number! try again.')
+        return;
+    }  
 })
 
-// Donate-Now Button Section 2 Function
+// Donate-Now Button Section card-2 Function
 
 document.getElementById('donate-now-2').addEventListener('click', function(){
     const showAmountElement = document.getElementById('show-amount-2');
@@ -85,20 +102,27 @@ document.getElementById('donate-now-2').addEventListener('click', function(){
     const mainBalance = parseFloat(mainBalanceElement.innerText);
 
     const inputValue = getInputValueById('input-value-2');
-    const newShowAmount = showAmount + inputValue;
 
-    showAmountElement.innerText = newShowAmount;
+    if(!isNaN(inputValue) && inputValue > 0 && inputValue <= mainBalance){
 
-    const remainingBalance = mainBalance - inputValue;
-    mainBalanceElement.innerText = remainingBalance;
-    history('input-value-2'); 
+        const newShowAmount = showAmount + inputValue;
 
-    document.getElementById("my_modal_3").showModal();
+        showAmountElement.innerText = newShowAmount;
 
+        const remainingBalance = mainBalance - inputValue;
+        mainBalanceElement.innerText = remainingBalance;  
+
+        history('input-value-2', 'card-title-2');
+        document.getElementById("my_modal_3").showModal();
+    }
+    else{
+        alert('Invalid number! try again.')
+        return;
+    }  
 })
 
 
-// Donate-Now Button Section 3 Function
+// Donate-Now Button Section card-3 Function
 
 document.getElementById('donate-now-3').addEventListener('click', function(){
     const showAmountElement = document.getElementById('show-amount-3');
@@ -108,16 +132,22 @@ document.getElementById('donate-now-3').addEventListener('click', function(){
     const mainBalance = parseFloat(mainBalanceElement.innerText);
 
     const inputValue = getInputValueById('input-value-3');
-    const newShowAmount = showAmount + inputValue;
+    if(!isNaN(inputValue) && inputValue > 0 && inputValue <= mainBalance){
 
-    showAmountElement.innerText = newShowAmount;  
-    
-    const remainingBalance = mainBalance - inputValue;
-    mainBalanceElement.innerText = remainingBalance;
-    history('input-value-3');
+        const newShowAmount = showAmount + inputValue;
 
-    document.getElementById("my_modal_3").showModal();
+        showAmountElement.innerText = newShowAmount;
 
+        const remainingBalance = mainBalance - inputValue;
+        mainBalanceElement.innerText = remainingBalance;  
+
+        history('input-value-3', 'card-title-3');
+        document.getElementById("my_modal_3").showModal();
+    }
+    else{
+        alert('Invalid number! try again.')
+        return;
+    }
 })
 
 // Go to Blog page Function
