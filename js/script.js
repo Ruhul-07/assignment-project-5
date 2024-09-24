@@ -20,7 +20,10 @@ function history(id){
     const historyContainer = document.getElementById('history-list');
     historyContainer.insertBefore(historyItem, historyContainer.firstChild);
 
+    historyContainer.classList.remove('hidden')
+
     return historyContainer;
+
 }
 
 // History Button Function
@@ -68,6 +71,8 @@ document.getElementById('donate-now-1').addEventListener('click', function(){
     const remainingBalance = mainBalance - inputValue;
     mainBalanceElement.innerText = remainingBalance;
     history('input-value-1');
+   
+    document.getElementById("my_modal_3").showModal();
 })
 
 // Donate-Now Button Section 2 Function
@@ -86,7 +91,10 @@ document.getElementById('donate-now-2').addEventListener('click', function(){
 
     const remainingBalance = mainBalance - inputValue;
     mainBalanceElement.innerText = remainingBalance;
-    history('input-value-2');  
+    history('input-value-2'); 
+
+    document.getElementById("my_modal_3").showModal();
+
 })
 
 
@@ -107,6 +115,9 @@ document.getElementById('donate-now-3').addEventListener('click', function(){
     const remainingBalance = mainBalance - inputValue;
     mainBalanceElement.innerText = remainingBalance;
     history('input-value-3');
+
+    document.getElementById("my_modal_3").showModal();
+
 })
 
 // Go to Blog page Function
